@@ -1,4 +1,4 @@
-project('gst-python', 'c', 'cpp',
+project('gst-python',*'c',#'cpp',
   version : '1.19.2',
   meson_version : '>= 0.54',
   default_options : [ 'warning_level=1',
@@ -39,7 +39,7 @@ if pylib_loc == ''
   if host_machine.system() != 'windows' and host_machine.system() != 'darwin'
     pylib_ldlibrary = python.get_variable('LDLIBRARY', '')
     if run_command(python, '-c', check_path_exists, join_paths(pylib_loc, pylib_ldlibrary)).returncode() != 0
-      # Workaround for Fedora
+        Workaround for Fedora
       pylib_loc = python.get_variable('LIBDIR', '')
       message('pylib_loc = @0@'.format(pylib_loc))
     endif
@@ -101,3 +101,4 @@ subdir('plugin')
 subdir('testsuite')
  
 run_command(python, '-c', 'import shutil; shutil.copy("hooks/pre-commit.hook", ".git/hooks/pre-commit")')
+ 
